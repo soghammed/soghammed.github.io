@@ -7,26 +7,169 @@
 			height:100vh;
 		}
 		body{
-			
+			background-color:#2d2d2d;
 		}
-		.bg{
-			background-image: url('docs/img/bg.jpg');
+		body{
+			background-image: url('docs/img/nightlights.jpg');
 			background-repeat: no-repeat;
-			background-size: cover;
+			background-size: auto;
+			background-attachment: fixed;
 			background-position: center;
-			filter:blur(2px);
+			filter:blur(0px);
+		}
+		.section{
+			min-height:600px;
+		}
+		.bounce {
+			animation: bounce;
+			animation-iteration-count: infinite;
+			animation-duration: 1s;
+		}
+		@keyframes bounce {
+			0% {
+				transform: translate(0,0);
+			}
+
+			50% {
+				transform: translate(0, 50px);
+			}
+
+			100% {
+				transform: translate(0, 0);
+			}
 		}
 	</style>
 
-    <!-- Compiled and minified CSS -->
+    <script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+      <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-	<div class="bg" style="height:100vh;width:100%">
-		<!-- &nbsp;&nbsp; -->
+	<div class="wrapper">
+		<nav style="background-color:transparent">
+			<div class="nav-wrapper">
+			  <a href="#!" class="brand-logo" style="margin-left:20px"><i class="material-icons">code</i></a>
+			  <ul class="right hide-on-med-and-down">
+			    <li><a href="#about"><i class="material-icons">keyboard_arrow_right</i></a></li>
+			    <!-- <li><a href="#skills"><i class="material-icons">Skills</i></a></li> -->
+			    <!-- <li><a href="#upcomingProjects"><i class="material-icons">Upcoming Projects</i></a></li> -->
+			    <!-- <li><a href="#contact"><i class="material-icons">Contact</i></a></li> -->
+			    <!-- <li><a href="mobile.html"><i class="material-icons"></i></a></li> -->
+			  </ul>
+			</div>
+		</nav>
+		<div class="content">
+			<div class="headerView section center" style="height:94vh;position: relative;">
+				<div class="imageHolder" style="padding-top:6%">
+					<img class="responsive-img" src="docs/img/bg.jpg" style="border-radius:50%;width:15%"/>
+				</div>
+				<div class="HeaderTitle">
+					<span style="font-size:4rem;color:#eee;">Full Stack Developer</span>
+				</div>
+				<div class="arrowDownHolder center">
+					<i class="material-icons bounce" id="pullmedown" style="cursor:pointer;color:white;font-size:5rem" onclick="testme('about')">keyboard_arrow_down</i>
+				</div>
+				<script type="text/javascript">
+					function testme(section){
+						// console.log('running');
+						$('html, body').animate({
+							scrollTop: $("."+section).offset().top
+						})
+					}
+					// $(document).ready(() => {
+					// 	$('#pullmedown').hover(() => {
+					// 		console.log('here', $(this));
+					// 		$('#pullmedown').addClass('bounce');
+					// 	}, () => {
+					// 		$('#pullmedown').removeClass('bounce');
+					// 	});
+					// });
+				</script>
+			</div>
+
+			<div class="about section" style="background-color:transparent;">
+				<div class="aboutContent" style="margin:50px 100px">
+					<div class="slider">
+				    <ul class="slides">
+				      <li>
+				        <img src="docs/img/projects/ticketLightMode.jpg"/>
+				        <div class="caption center-align">
+				          <h3>This is our big Tagline!</h3>
+				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				        </div>
+				      </li>
+				      <li>
+				        <img src="docs/img/projects/ticketDarkMode.jpg"> <!-- random image -->
+				        <div class="caption left-align">
+				          <h3>Left Aligned Caption</h3>
+				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				        </div>
+				      </li>
+<!-- 				      <li>
+				        <img src="https://lorempixel.com/580/250/nature/3"> 
+				        <div class="caption right-align">
+				          <h3>Right Aligned Caption</h3>
+				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				        </div>
+				      </li>
+				      <li>
+				        <img src="https://lorempixel.com/580/250/nature/4"> 
+				        <div class="caption center-align">
+				          <h3>This is our big Tagline!</h3>
+				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				        </div>
+				      </li> -->
+				    </ul>
+				    <script> $(document).ready(function(){
+						    $('.slider').slider({
+						    	height: 600
+						    });
+						  });
+				   	</script>
+				  </div>
+				      
+					<div class="aboutText">
+
+					</div>
+				</div>
+			</div>
+
+			<div class="section">
+
+			</div>
+		</div>
 	</div>
+	<ul id="slide-out" class="sidenav">
+    <li>
+    	<div class="user-view">
+			<div class="bg">
+			<!-- <img src="images/office.jpg"> -->
+			</div>
+			<!-- <a href="#user"><img class="circle" src="images/yuna.jpg"></a> -->
+				<!-- 			<a href="#name"><span class="white-text name">John Doe</span></a>
+			<a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
+    	</div>
+    </li>
+    <li><a href="#!"><i class="material-icons">cloud</i></a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
+  <!-- <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
+  <script>
+  	$(document).ready(function(){
+		$('.sidenav').sidenav();
+	});
+  </script>
+<!-- 	<div class="bg" style="height:100vh;width:100%">
+	/div> -->
 </body>
 </html>
