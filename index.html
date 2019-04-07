@@ -4,10 +4,10 @@
 	<title></title>
 	<style>
 		html{
-			height:100vh;
+			height:200vh;
 		}
-		body{
-			background-color:#2d2d2d;
+		nav{
+			z-index: 1;
 		}
 		body{
 			background-image: url('docs/img/nightlights.jpg');
@@ -38,26 +38,93 @@
 				transform: translate(0, 0);
 			}
 		}
+		.textshadow{
+			/*border:2px solid black;*/
+			text-shadow:1px 1px 1px black;
+		}
+		.img-responsive {
+		    max-width: 100%;
+		    height: auto;
+		    vertical-align: middle;
+		}
+		.itemImage img{
+			width:100%;
+		}
+		.item{
+			margin-bottom:20px;
+		}
+		.itemText{
+			padding:20px;
+			border-radius:2px;
+			background-color:rgba(0,0,0,0.5);
+			color:white;
+			width:20%;
+		}
+		.textItemHolder{
+			min-width: 200px;
+		}
+		.projectHolder{
+			overflow-y: scroll;
+			max-height: 750px;
+		}
+		.socialMediaStripe{
+			/*width:50px;*/
+			/*border:1px solid gold;*/
+			position:fixed;
+			top:50px;
+			left:0;
+		}
+		.socialMediaStripe ul li{
+			margin-top:10px;
+			transition: all 0.2s;
+		}
+		.socialMediaStripe ul li:hover{
+			font-size:1.2rem;
+		}
+		/* width */
+		::-webkit-scrollbar {
+		  width: 10px;
+		}
+
+		::-webkit-scrollbar-track {
+			background-color:rgba(0,0,0,0.9);
+		  /*box-shadow: inset 0 0 5px red; */
+		  /*border-radius: 10px;*/
+		}
+		 
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+		  background: rgba(1, 50, 51, 1)
+		  /*border-radius: 10px;*/
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+		  background: #280E1A;
+		}
+
 	</style>
 
     <script
 	  src="https://code.jquery.com/jquery-3.3.1.min.js"
 	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous"></script>
-      <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
 </head>
 <body>
-	<div class="wrapper">
-		<nav style="background-color:transparent">
+	<div style="min-width: 900px;">
+		<nav style="background-color:rgba(0,0,0,1);">
 			<div class="nav-wrapper">
-			  <a href="#!" class="brand-logo" style="margin-left:20px"><i class="material-icons">code</i></a>
+			  <a href="" class="brand-logo" style="margin-left:20px"><i class="material-icons">keyboard_arrow_right</i></a>
 			  <ul class="right hide-on-med-and-down">
-			    <li><a href="#about"><i class="material-icons">keyboard_arrow_right</i></a></li>
+			    <li><a href="#about" onclick="scrollMeTo('about')"><i class="material-icons">perm_identity</i></a></li>
+			    <li><a href="#projects" onclick="scrollMeTo('projects')"><i class="material-icons">apps</i></a></li>
 			    <!-- <li><a href="#skills"><i class="material-icons">Skills</i></a></li> -->
 			    <!-- <li><a href="#upcomingProjects"><i class="material-icons">Upcoming Projects</i></a></li> -->
 			    <!-- <li><a href="#contact"><i class="material-icons">Contact</i></a></li> -->
@@ -65,19 +132,19 @@
 			  </ul>
 			</div>
 		</nav>
-		<div class="content">
-			<div class="headerView section center" style="height:94vh;position: relative;">
-				<div class="imageHolder" style="padding-top:6%">
+		<div class="content" style="background-color:rgba(0,0,0,0.8)">
+			<div class="headerView section center" style="height:94vh;position: relative;display:flex;flex-direction:column; justify-content: center;align-content:center">
+				<div class="imageHolder">
 					<img class="responsive-img" src="docs/img/bg.jpg" style="border-radius:50%;width:15%"/>
 				</div>
 				<div class="HeaderTitle">
-					<span style="font-size:4rem;color:#eee;">Full Stack Developer</span>
+					<span class="textshadow" style="font-size:4rem;color:#eee;">Full Stack Developer</span>
 				</div>
 				<div class="arrowDownHolder center">
-					<i class="material-icons bounce" id="pullmedown" style="cursor:pointer;color:white;font-size:5rem" onclick="testme('about')">keyboard_arrow_down</i>
+					<i class="material-icons bounce" id="pullmedown" style="cursor:pointer;color:white;font-size:5rem" onclick="scrollMeTo('about')">keyboard_arrow_down</i>
 				</div>
 				<script type="text/javascript">
-					function testme(section){
+					function scrollMeTo(section){
 						// console.log('running');
 						$('html, body').animate({
 							scrollTop: $("."+section).offset().top
@@ -94,82 +161,68 @@
 				</script>
 			</div>
 
-			<div class="about section" style="background-color:transparent;">
-				<div class="aboutContent" style="margin:50px 100px">
-					<div class="slider">
-				    <ul class="slides">
-				      <li>
-				        <img src="docs/img/projects/ticketLightMode.jpg"/>
-				        <div class="caption center-align">
-				          <h3>This is our big Tagline!</h3>
-				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-				        </div>
-				      </li>
-				      <li>
-				        <img src="docs/img/projects/ticketDarkMode.jpg"> <!-- random image -->
-				        <div class="caption left-align">
-				          <h3>Left Aligned Caption</h3>
-				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-				        </div>
-				      </li>
-<!-- 				      <li>
-				        <img src="https://lorempixel.com/580/250/nature/3"> 
-				        <div class="caption right-align">
-				          <h3>Right Aligned Caption</h3>
-				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-				        </div>
-				      </li>
-				      <li>
-				        <img src="https://lorempixel.com/580/250/nature/4"> 
-				        <div class="caption center-align">
-				          <h3>This is our big Tagline!</h3>
-				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-				        </div>
-				      </li> -->
-				    </ul>
-				    <script> $(document).ready(function(){
-						    $('.slider').slider({
-						    	height: 600
-						    });
-						  });
-				   	</script>
-				  </div>
-				      
-					<div class="aboutText">
-
+			<div class="about section center" style="padding:50px 200px;background-color:#280E1A;display:flex;justify-content: center;align-content: center;flex-direction: column;">
+				<div style="font-size:1.5rem">
+					<div style="color:rgba(255,255,255,1);">
+						I<span style="font-weight:bolder">'</span>m a passionate coder, looking to provide industry standard cross-platform software/web solutions aimed at enhancing people's quality of life.
+					</div>
+					<br>
+					<span style="color:rgba(255,255,255,0.3)"><i>"If you can envision your product, you're half way there."</i></span>
+				</div>
+			</div>
+			
+			<div class="projects section">
+				<div class="projectsContent" style="margin:50px 100px">
+					<div class="center projectHolder">
+						<div class="item">
+							<div class="itemImage">
+								<img src="docs/img/projects/ticketLightMode.jpg" />
+							</div>
+							<div class="itemTextHolder">
+								<div class="itemText" style="margin:auto">Laravel/React.js (lightmode)</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="itemImage">
+								<img src="docs/img/projects/ticketDarkMode.jpg" />
+							</div>
+							<div class="itemTextHolder">
+								<div class="itemText" style="margin:auto">Laravel/React.js (darkmode)</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="itemImage">
+								<img src="docs/img/projects/reactnative.png" style="width:20%" />
+							</div>
+							<div class="itemTextHolder">
+								<div class="itemText" style="margin:auto">React Native</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="section">
-
+	<!-- 			<div class="contact section center">
+			
 			</div>
+ 	-->
 		</div>
 	</div>
-	<ul id="slide-out" class="sidenav">
-    <li>
-    	<div class="user-view">
-			<div class="bg">
-			<!-- <img src="images/office.jpg"> -->
-			</div>
-			<!-- <a href="#user"><img class="circle" src="images/yuna.jpg"></a> -->
-				<!-- 			<a href="#name"><span class="white-text name">John Doe</span></a>
-			<a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
-    	</div>
-    </li>
-    <li><a href="#!"><i class="material-icons">cloud</i></a></li>
-    <li><a href="#!">Second Link</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-  </ul>
-  <!-- <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
-  <script>
-  	$(document).ready(function(){
-		$('.sidenav').sidenav();
-	});
-  </script>
-<!-- 	<div class="bg" style="height:100vh;width:100%">
-	/div> -->
+	<div class="socialMediaStripe">
+		<ul style="list-style-type: none;background-color:rgba(0,0,0,0.5);padding:10px;width:100%;">
+			<li><a target="_blank" href="https://www.linkedin.com/in/mhammed"><i class="fab fa-linkedin fa-2x"></i></a>
+			<li><a target="_blank" href="https://github.com/soghammed"><i class="fab fa-github-square fa-2x"></i></a>
+		</ul>
+	</div>
+	<script>
+		$(document).ready( () => {
+			window.onscroll = function (event){
+				$('.socialMediaStripe').animate({
+					scrollTop: document.scrollTop
+				}, () => console.log('animated'));
+			}
+			// $('.socialMediaStripe').
+		})
+	</script>
+
 </body>
 </html>
