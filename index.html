@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title></title>
 	<style>
 		html{
 			height:200vh;
+			user-select: none;
 		}
 		nav{
 			z-index: 1;
@@ -106,6 +108,9 @@
 		::-webkit-scrollbar-thumb:hover {
 		  background: #280E1A;
 		}
+		.iconHover{
+			color: #280E1A;
+		}
 
 	</style>
 
@@ -125,7 +130,7 @@
 	<script>
 		$(document).ready(() => {
 			window.onscroll = function(event){
-				console.log(event);
+				// console.log(event);
 			}
 		});
 	</script>
