@@ -3,7 +3,18 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title></title>
-	<style>
+	
+
+    <script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <style>
 		html{
 			height:200vh;
 			user-select: none;
@@ -108,22 +119,16 @@
 		::-webkit-scrollbar-thumb:hover {
 		  background: #280E1A;
 		}
-		.iconHover{
-			color: #280E1A;
+		.iconHover:hover i{
+			color: rgba(1, 50, 51, 1);//#280E1A;
 		}
-
+/*		#aboutIcon :hover i {
+  		color: red; 
+  	}*/
+  	a{
+  		color:#301823;
+  	}
 	</style>
-
-    <script
-	  src="https://code.jquery.com/jquery-3.3.1.min.js"
-	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	  crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
 
 </head>
 <body>
@@ -137,10 +142,10 @@
 	<div style="min-width: 900px;">
 		<nav style="background-color:rgba(0,0,0,1);">
 			<div class="nav-wrapper">
-			  <a href="" class="brand-logo" style="margin-left:20px"><i class="material-icons">keyboard_arrow_right</i></a>
+			  <a href="" class="brand-logo" style="margin-left:20px"><i class="material-icons" style="color:rgba(1, 50, 51, 1);">keyboard_arrow_right</i></a>
 			  <ul class="right hide-on-med-and-down">
-			    <li><a href="#about" onclick="scrollMeTo('about')"><i class="material-icons">perm_identity</i></a></li>
-			    <li><a href="#projects" onclick="scrollMeTo('projects')"><i class="material-icons">apps</i></a></li>
+			    <li><a href="#about" class="iconHover" onclick="scrollMeTo('about')"><i class="material-icons">perm_identity</i></a></li>
+			    <li><a href="#projects" class="iconHover" onclick="scrollMeTo('projects')"><i class="material-icons">apps</i></a></li>
 			    <!-- <li><a href="#skills"><i class="material-icons">Skills</i></a></li> -->
 			    <!-- <li><a href="#upcomingProjects"><i class="material-icons">Upcoming Projects</i></a></li> -->
 			    <!-- <li><a href="#contact"><i class="material-icons">Contact</i></a></li> -->
@@ -225,8 +230,8 @@
 	</div>
 	<div class="socialMediaStripe">
 		<ul style="list-style-type: none;background-color:rgba(0,0,0,0.5);padding:10px;width:100%;">
-			<li><a target="_blank" href="https://www.linkedin.com/in/mhammed"><i class="fab fa-linkedin fa-2x"></i></a>
-			<li><a target="_blank" href="https://github.com/soghammed"><i class="fab fa-github-square fa-2x"></i></a>
+			<li><a target="_blank" href="https://www.linkedin.com/in/mhammed"><i class="fab fa-linkedin fa-3x"></i></a>
+			<li><a target="_blank" href="https://github.com/soghammed"><i class="fab fa-github-square fa-3x"></i></a>
 		</ul>
 	</div>
 	<script>
