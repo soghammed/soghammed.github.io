@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
-	
-
+	<title>SOG Hammed</title>
+	<meta name="description" content="Full Stack Web/App Developer providing scalable software solutions tailored to your needs.">
+	<meta name="keywords" content="PHP Developer,Web Developer,Application Developer,React Native Developer,Coldfusion Developer,react.js developer">
+	<meta name="DC.title" content="S.O.G Web/App Developer">
     <script
 	  src="https://code.jquery.com/jquery-3.3.1.min.js"
 	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -136,9 +138,16 @@
 </head>
 <body>
 	<script>
+		// function animateSocial(){
+		// 	var el = $('#socialMediaList');
+		// 	document.documentElement.scrollTop = 0;
+
+		// 	el.css('background-color', 'rgba(1, 50, 51, 0.2)');
+		// }
+
 		$(document).ready(() => {
 			window.onscroll = function(event){
-				console.log(document.documentElement.scrollTop);
+				// console.log(document.documentElement.scrollTop);
 			}
 		});
 	</script>
@@ -149,6 +158,7 @@
 			  <ul class="right hide-on-med-and-down">
 			    <li><a href="#about" class="iconHover" onclick="scrollMeTo(770,'about')"><i class="material-icons">perm_identity</i></a></li>
 			    <li><a href="#projects" class="iconHover" onclick="scrollMeTo(0,'projects')"><i class="material-icons">apps</i></a></li>
+			    <!-- <li><a href="#contact" class="iconHover" onclick="animateSocial()"><i class="material-icons">contact_mail</i></a></li> -->
 			    <!-- <li><a href="#skills"><i class="material-icons">Skills</i></a></li> -->
 			    <!-- <li><a href="#upcomingProjects"><i class="material-icons">Upcoming Projects</i></a></li> -->
 			    <!-- <li><a href="#contact"><i class="material-icons">Contact</i></a></li> -->
@@ -162,7 +172,7 @@
 					<img class="responsive-img" src="docs/img/bg.jpg" style="border-radius:50%;width:15%"/>
 				</div>
 				<div class="HeaderTitle">
-					<span class="textshadow" style="font-size:4rem;color:#eee;">Full Stack Developer</span>
+					<span class="textshadow" style="font-size:4rem;color:#eee;">S.O.G<br>Full Stack Developer</span>
 				</div>
 				<div class="arrowDownHolder center">
 					<i class="material-icons bounce" id="pullmedown" style="cursor:pointer;color:white;font-size:5rem" onclick="scrollMeTo(770, 'about')">keyboard_arrow_down</i>
@@ -234,7 +244,7 @@
 		</div>
 	</div>
 	<div class="socialMediaStripe">
-		<ul style="list-style-type: none;background-color:rgba(0,0,0,0.5);padding:10px;width:100%;">
+		<ul id="socialMediaList" style="list-style-type: none;background-color:rgba(0,0,0,0.5);padding:10px;width:100%;">
 			<li><a target="_blank" href="https://www.linkedin.com/in/mhammed"><i class="fab fa-linkedin fa-3x"></i></a>
 			<li><a target="_blank" href="https://github.com/soghammed"><i class="fab fa-github-square fa-3x"></i></a>
 		</ul>
