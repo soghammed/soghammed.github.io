@@ -19,10 +19,10 @@
   <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script> -->
-  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+  <!-- <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script> -->
+<!-- <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script> -->
   <style>
 		html{
 			height:200vh;
@@ -254,24 +254,6 @@
 			<li><a target="_blank" href="https://github.com/soghammed"><i class="fab fa-github-square fa-3x"></i></a>
 		</ul>
 	</div>
-	<!-- <button onclick="ajaxMe()">click me</button> -->
-	<div id="chatwindow">
-		BEFORE LOADING REACT SCRIPT
-	</div>
-	<script type="text/babel">
-		const ChatWindow = React.createClass({
-			render: function(){
-
-				return (
-					<h2>ChatWindowReactComponent</h2>
-				);
-			}
-		});
-		setIntervat(() => {
-			ReactDOM.render(<ChatWindow />, document.getElementById('chatwindow'))
-		}, 50);
-	</script>
-	<!-- <script src="docs/js/chatwindow.js"></script> -->
 	<script>
 		const proxyurl = "https://cors-anywhere.herokuapp.com/";
 		const url = "http://soghammed.ddns.net/ticketsystem/public/test";
