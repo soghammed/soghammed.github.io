@@ -1,0 +1,16 @@
+{
+  "main.js": "/static/js/main.5893e568.chunk.js",
+  "main.js.map": "/static/js/main.5893e568.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+  "static/js/2.c42574b7.chunk.js": "/static/js/2.c42574b7.chunk.js",
+  "static/js/2.c42574b7.chunk.js.map": "/static/js/2.c42574b7.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.cc5169d3195647077c155225d808e313.js": "/precache-manifest.cc5169d3195647077c155225d808e313.js",
+  "service-worker.js": "/service-worker.js",
+  "static/media/bg.jpg": "/static/media/bg.36fa8507.jpg",
+  "static/media/nightlights.jpg": "/static/media/nightlights.44a63bcf.jpg",
+  "static/media/reactnative.png": "/static/media/reactnative.db84c831.png",
+  "static/media/ticketDarkMode.jpg": "/static/media/ticketDarkMode.b89a8faa.jpg",
+  "static/media/ticketLightMode.jpg": "/static/media/ticketLightMode.c89b56db.jpg"
+}
