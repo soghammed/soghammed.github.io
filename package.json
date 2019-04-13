@@ -2,7 +2,7 @@
   "name": "react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://soghammed.github.io",
+  "homepage": "https://soghammed.github.io/debug",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -o origin -b master",
+    "deploy": "gh-pages -d build -o debug -b master",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
