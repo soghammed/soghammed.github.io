@@ -66,7 +66,7 @@ class LandingPage extends Component {
 					className="btn-floating btn-small waves-effect waves-light"
 					style={{
 						position: "fixed",
-						bottom:"500px",
+						bottom:"20px",
 						right: "20px",
 						backgroundColor:'rgba(1, 50, 51, 1)'
 					}}
