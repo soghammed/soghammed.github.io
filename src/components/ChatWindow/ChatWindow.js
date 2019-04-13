@@ -192,7 +192,118 @@ class ChatWindow extends Component {
 					//if comments exist show container else show login
 					this.state.user  ? 
 					(
-						<User user={this.state.user} token={this.state.token} logout={this.logout}/>
+						<div>
+							<div 
+							className="card-body"
+							style={{
+								marginTop:"20px",
+								position:"relative",
+								minHeight:"200px",
+								maxHeight:"300px",
+								overflowY:"scroll",
+								padding:"0 10px",
+								borderRadius:"20px",
+								// padding:"40px",
+							}}>
+								{/* animate first message as tho am typing then send */}
+								<div
+									className="card hoverable"
+									style={{
+										backgroundColor: "rgba(255,255,255,1)",
+										padding:"20px",
+										// margin:"10px 0 20px",
+										display:'inline-block',
+										maxWidth:"100%",
+										overflowWrap:"break-word",
+										// float:this.props.client.id == comment.by_userID ? "right" : "left",
+										float:"right",
+										boxShadow:"0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+									}}>
+									<b>S.O.G</b>
+									<div>
+										Hi! How can i help you?
+									</div>
+								</div>
+								{
+									comments ? 
+									comments.map(comment => {
+										let commentView = (
+											<div
+												className="card hoverable"
+												style={{
+													backgroundColor: clientID === comment.by_userID ? "rgba(255,255,255,1)" : "gold",
+													padding:"20px",
+													// margin:"10px 0 20px",
+													display:'inline-block',
+													maxWidth:"100%",
+													overflowWrap:"break-word",
+													// float:this.props.client.id == comment.by_userID ? "right" : "left",
+													float:clientID === comment.by_userID ? "right" : "left",
+													boxShadow:"0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+												}}>
+												<div 
+													style={{
+														// color:themeMode == "dark" ?
+														// "#ffbf00" 
+														// : 
+														// "#eee", 
+														// fontWeight:"bold"
+													}}>
+													<b>
+													{comment.by_userID === clientID ? "" : comment.owner.displayName}
+													</b>
+												</div>
+												<div style={{color:themeMode === "dark" ? "#eee" : "#2d2d2d",whiteSpace: "pre-wrap"}}>
+													{comment.comment}
+												</div>
+
+											</div>
+										);
+										return commentView;
+									})
+									:
+									null
+								}
+							</div>
+							<div 
+								id="newChatCommentContainer"
+								style={{
+									margin:"0 10px"
+								}}>
+								<div className="input-field" style={{display:"inline-block",width:"90%"}}>
+						          <i 
+						          	className="material-icons prefix" 
+						          	style={{
+						          		// color:theme[themeMode].themeColor
+						          		color: "#013233",
+						          	}}>message</i>
+						          <textarea 
+						          	id="icon_prefix2" 
+						          	className="materialize-textarea" 
+						          	autoComplete="press"
+						          	value={this.state.message}
+						          	onChange={(e) => this.setState({message: e.target.value})}
+						          	></textarea>
+						          <label 
+						          	htmlFor="icon_prefix2" 
+						          	style={{
+						          		color: "#lightgrey"
+						          		// color:theme[themeMode].themeColor
+						          	}}>
+						          	Message
+						          </label>
+						        </div>
+						        <button 
+						        	className="btn-floating btn-small waves-effect waves-light" 
+						        	style={{
+						        		// backgroundColor:theme[themeMode].themeColor,
+						        		transform:"translate(10px,-25px)",
+						        		backgroundColor:"black",
+						        	}}
+						        	onClick={() => this.addComment()}
+						        	><i className="material-icons" style={{backgroundColor:"#013233"}}>check</i></button>	
+							</div>
+						</div>
 					)
 					:
 					(
