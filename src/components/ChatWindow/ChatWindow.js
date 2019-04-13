@@ -86,10 +86,10 @@ class ChatWindow extends Component {
 	}
 	logout () {
 		const { logged, currentProvider } = this.state;
-		console.log(logged, currentProvider);
+		// console.log(logged, currentProvider);
 		if( logged && currentProvider ) {
 			console.log(this.nodes[currentProvider].props.triggerLogout);
-			console.log(this.nodes[currentProvider]);
+			console.log(this.nodes[currentProvider].checkLoggedIn());
 			this.nodes[currentProvider].props.triggerLogout()
 		} 
 	}
