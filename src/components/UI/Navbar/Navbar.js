@@ -18,11 +18,11 @@ class Navbar extends Component {
 			  	</i>
 			  </span>
 			  <ul className="right hide-on-med-and-down">
-			    <li>
+			    {/*<li>
 			    	<a href="#me" className="iconHover">
 			    		<i className="material-icons">person</i>
 			    	</a>
-			    </li>
+			    </li>*/}
 			    <li>
 			    	<a href="#about" className="iconHover" onClick={() => window.scrollMeTo(770,'about')}>
 			    		<i className="material-icons">perm_identity</i>
