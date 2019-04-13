@@ -32,6 +32,7 @@ class ChatWindow extends Component {
 		if(node) {
 			this.nodes[ provider ] = node
 		}
+		console.log(node);
 	}
 
 	componentWillMount(){
@@ -317,7 +318,7 @@ class ChatWindow extends Component {
 									<SocialButton 
 										provider="facebook"
 										appId="375823176606290"
-										autoLogin={true}
+										// autoLogin={true}
 										onLoginSuccess={this.handleSocialLogin}
 										onLoginFailure={this.handleSocialLoginFailure}
 										onLogoutSuccess={this.handleSocialLogout}
