@@ -89,8 +89,31 @@ class ChatWindow extends Component {
 		const { logged, currentProvider } = this.state;
 		// console.log(logged, currentProvider);
 		if( logged && currentProvider ) {
+<<<<<<< HEAD
 			console.log(this.nodes[currentProvider].props.triggerLogout);
 			this.nodes[currentProvider].props.triggerLogout()
+=======
+			console.log(this.nodes);
+			// console.log(this.nodes[currentProvider].props.triggerLogout);
+			// console.log(this.nodes[currentProvider].checkLoggedIn());
+			if(currentProvider === 'google'){
+				this.nodes[currentProvider].props.triggerLogout()
+				this.setState( prevState => {
+					return {
+						...prevState,
+						user: null,
+						token: null,
+						currentProvider: null,
+						logged: false,
+						isLoaded:false,
+						isConnected:false
+					}
+				}, () => console.log(this.state));
+				// document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://soghammed.github.io";
+			}else{
+				this.nodes[currentProvider].props.triggerLogout()
+			}
+>>>>>>> 1f836f03defa2917f44c458e257d22ae9a014d74
 		} 
 	}
 
@@ -136,12 +159,22 @@ class ChatWindow extends Component {
 				id="chatWindow"
 				className="card"
 				style={{
-					margin:0
-				}}>
+					margin:0,
+					height:"41px",
+				}}
+				onClick={
+					(el) => {
+						console.log(el.target.className);
+						if(el.target.className.includes('card-header')){
+							window.toggleChatWindow()
+						}
+					}
+				}>
 				<div 
 					className="card-header center"
 					style={{
 						color:"white",
+						cursor:"pointer",
 						padding:"10px",
 						backgroundColor:"#013233"
 					}}>
@@ -173,7 +206,7 @@ class ChatWindow extends Component {
 							account_circle
 						</i>
 						<ul 
-							id='dropdown1' 
+							id={this.state.user ? 'dropdown1' : null} 
 							className='dropdown-content'>
 							<li onClick={() => this.logout() }>
 								<a href="#test">
@@ -300,7 +333,7 @@ class ChatWindow extends Component {
 						        		transform:"translate(10px,-25px)",
 						        		backgroundColor:"black",
 						        	}}
-						        	onClick={() => this.addComment()}
+						        	// onClick={() => this.addComment()}
 						        	><i className="material-icons" style={{backgroundColor:"#013233"}}>check</i></button>	
 							</div>
 						</div>
@@ -315,26 +348,26 @@ class ChatWindow extends Component {
 							<div className="center">
 								{
 									// <div className="fb-login-button" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="true"></div>
-									<SocialButton 
-										provider="facebook"
-										appId="375823176606290"
-										// autoLogin={true}
-										onLoginSuccess={this.handleSocialLogin}
-										onLoginFailure={this.handleSocialLoginFailure}
-										onLogoutSuccess={this.handleSocialLogout}
-										onLogoutFailure={this.handleSocialLogoutFailure}
-										getInstance={this.setNodeRef.bind(this, 'facebook')}
-										key={'facebook'}
-										logged={this.state.logged}
-										socialsite="facebook"
-										setClient={this.setClient}
-										uiStartLoading={this.props.uiStartLoading}
-										uiStopLoading={this.props.uiStopLoading}
-										isLoading={this.props.isLoading}
-										scope="public_profile,name,email,profilePicURL"
-										/>
+									// <SocialButton 
+									// 	provider="facebook"
+									// 	appId="375823176606290"
+									// 	// autoLogin={true}
+									// 	onLoginSuccess={this.handleSocialLogin}
+									// 	onLoginFailure={this.handleSocialLoginFailure}
+									// 	onLogoutSuccess={this.handleSocialLogout}
+									// 	onLogoutFailure={this.handleSocialLogoutFailure}
+									// 	getInstance={this.setNodeRef.bind(this, 'facebook')}
+									// 	key={'facebook'}
+									// 	logged={this.state.logged}
+									// 	socialsite="facebook"
+									// 	setClient={this.setClient}
+									// 	uiStartLoading={this.props.uiStartLoading}
+									// 	uiStopLoading={this.props.uiStopLoading}
+									// 	isLoading={this.props.isLoading}
+									// 	scope="public_profile,name,email,profilePicURL"
+									// 	/>
 								}
-								{/* <SocialButton  
+								<SocialButton  
 								 	provider="google"
 								 	appId="1040584838630-pf5ubddagk3bo898q6iubktr3hd6u4k4.apps.googleusercontent.com"
 								 	onLoginSuccess={this.handleSocialLogin}
@@ -342,6 +375,7 @@ class ChatWindow extends Component {
 								 	socialsite="google"
 								 	setClient={this.setClient}
 								 	uiStartLoading={this.props.uiStartLoading}
+<<<<<<< HEAD
 								 	uiStopLoading={this.props.uiStopLoading}/>*/}
 									<SocialButton
 										provider="instagram"
@@ -358,6 +392,13 @@ class ChatWindow extends Component {
 										isLoading={this.props.isLoading}
 									/>
 								
+=======
+								 	uiStopLoading={this.props.uiStopLoading}
+								 	onLogoutSuccess={this.handleSocialLogout}
+								 	onLogoutFailure={this.handleSocialLogoutFailure}
+								 	/>
+
+>>>>>>> 1f836f03defa2917f44c458e257d22ae9a014d74
 							</div>
 						</div>
 					)
@@ -431,7 +472,7 @@ class ChatWindow extends Component {
 					// border: "3px solid gold",
 					position:"fixed",
 					bottom:0,
-					right:"50px",
+					right:"70px",
 					// minHeight:"500px",
 					minWidth:"450px",
 				}}>

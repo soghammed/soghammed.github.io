@@ -81,6 +81,12 @@
       function initLogoutDropdown(){
         $(document).ready(() => $('.dropdown-trigger').dropdown());
       }
+      function toggleChatWindow(){
+        console.log($("#chatWindow").css('height'));
+        $('#chatWindow').animate({
+          height: $("#chatWindow").css('height') == '41px' ? "181px" : "41px"
+        });
+      }
     </script>
     <div id="root"></div>
     <!--

@@ -12,7 +12,7 @@ class LandingScreen extends Component {
 			<div 
 				className="headerView section center" 
 				style={{
-					height:"94vh",
+					height:"100vh",
 					position:"relative",
 					display:"flex",
 					flexDirection:"column",
