@@ -67,7 +67,7 @@ class ChatWindow extends Component {
 
 	handleSocialLogout(){
 		console.log('logged out from current profile and now unsetting profile');
-		window.FB.getLoginStatus(res => console.log('status after logout', res));
+		// window.FB.getLoginStatus(res => console.log('status after logout', res));
 		this.setState( prevState => {
 			return {
 				...prevState,
@@ -89,7 +89,6 @@ class ChatWindow extends Component {
 		// console.log(logged, currentProvider);
 		if( logged && currentProvider ) {
 			console.log(this.nodes[currentProvider].props.triggerLogout);
-			console.log(this.nodes[currentProvider].checkLoggedIn());
 			this.nodes[currentProvider].props.triggerLogout()
 		} 
 	}
@@ -318,7 +317,7 @@ class ChatWindow extends Component {
 									<SocialButton 
 										provider="facebook"
 										appId="375823176606290"
-										// autoLogin={true}
+										autoLogin={true}
 										onLoginSuccess={this.handleSocialLogin}
 										onLoginFailure={this.handleSocialLoginFailure}
 										onLogoutSuccess={this.handleSocialLogout}
