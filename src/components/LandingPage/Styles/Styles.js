@@ -129,6 +129,9 @@ class Styles extends Component {
 				  	a{
 				  		color:rgba(1, 50, 51, 1);
 				  	}
+				  	#chatWindow{
+				  		transition: height 0.3s linear;
+				  	}
 				`}
 			</Style>
 		);

@@ -28,7 +28,7 @@ class LandingPage extends Component {
 					<LandingScreen scrollMeTo={window.scrollMeTo}/>
 					<About scrollMeTo={window.scrollMeTo}/>
 					<Projects scrollMeTo={window.scrollMeTo}/>
-					{/*<ChatWindow />*/}
+					<ChatWindow />
 					{/*	<ContactUs scrollMeTo={window.scrollMeTo}/>*/}
 				</div>
 			</div>

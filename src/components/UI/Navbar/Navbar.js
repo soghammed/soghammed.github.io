@@ -42,7 +42,7 @@ class Navbar extends Component {
 			</div>
 		);
 		return(
-			<nav>
+			<nav style={{position:"fixed"}}>
 				{content}
 			</nav>
 		);
