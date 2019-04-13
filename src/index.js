@@ -6,7 +6,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import * as serviceWorker from './serviceWorker';
 
 import configStore from './store/configStore';
-import { Provider, connect } from 'react-redux'; 
+import { Provider } from 'react-redux'; 
 
 if (document.getElementById('root')) {
     // (async init  => {

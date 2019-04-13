@@ -7,7 +7,7 @@ class Navbar extends Component {
 	render(){
 		let content = (
 			<div className="nav-wrapper">
-			  <a href="" className="brand-logo" style={{marginLeft:"20px"}}>
+			  <span className="brand-logo" style={{marginLeft:"20px"}}>
 			  	<i 
 			  		className="material-icons" 
 			  		style={{
@@ -16,10 +16,15 @@ class Navbar extends Component {
 			  		}}>
 			  		<b>keyboard_arrow_right</b>
 			  	</i>
-			  </a>
+			  </span>
 			  <ul className="right hide-on-med-and-down">
 			    <li>
-			    	<a href="#" className="iconHover" onClick={() => window.scrollMeTo(770,'about')}>
+			    	<a href="#me" className="iconHover">
+			    		<i className="material-icons">person</i>
+			    	</a>
+			    </li>
+			    <li>
+			    	<a href="#about" className="iconHover" onClick={() => window.scrollMeTo(770,'about')}>
 			    		<i className="material-icons">perm_identity</i>
 			    	</a>
 			    </li>

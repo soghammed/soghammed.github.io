@@ -30,6 +30,45 @@
     <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
   </head>
   <body>
+    <script>
+      // window.fbAsyncInit = function() {
+        // FB.init({
+        //   appId            : '375823176606290',
+        //   autoLogAppEvents : true,
+        //   xfbml            : true,
+        //   version          : 'v3.2'
+        // });
+
+        // FB.getLoginStatus(res => {
+        //   //if logged in sign out
+        //   console.log(res);
+        //   if(res.status == 'connected'){
+        //     FB.logout(function(response) {
+        //       FB.Auth.setAuthResponse(null, 'unknown');
+        //     });
+        //   }
+        // });
+        // FB.login(function(response) {
+        //   if (response.authResponse) {
+        //    console.log('Welcome!  Fetching your information.... ');
+        //    FB.api('/me', {
+        //       fields: 'name,email,picture',
+        //       // access_token: response.authResponse.accessToken
+        //     }, function(response) {
+        //     console.log(response, window);
+        //      console.log('Good to see you, ' + response.name + '.');
+        //    });
+        //   } else {
+        //    console.log('User cancelled login or did not fully authorize.');
+        //   }
+        // });
+      // };
+
+
+
+
+    </script>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="text/javascript">
 
@@ -38,6 +77,9 @@
         $('html, body').animate({
           scrollTop: num ? num : section ? $("."+section).offset().top : 0
         });
+      }
+      function initLogoutDropdown(){
+        $(document).ready(() => $('.dropdown-trigger').dropdown());
       }
     </script>
     <div id="root"></div>

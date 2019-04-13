@@ -7,6 +7,7 @@ import LandingScreen from './LandingScreen/LandingScreen';
 import Projects from './Projects/Projects';
 import ChatWindow from '../ChatWindow/ChatWindow';
 import Styles from './Styles/Styles';
+import { connect } from 'react-redux';
 
 class LandingPage extends Component {
 		
@@ -61,8 +62,8 @@ class LandingPage extends Component {
 						</li>
 					</ul>
 				</div>
-				<a 
-					class="btn-floating btn-small waves-effect waves-light"
+				<span 
+					className="btn-floating btn-small waves-effect waves-light"
 					style={{
 						position: "fixed",
 						bottom:"500px",
@@ -70,11 +71,23 @@ class LandingPage extends Component {
 						backgroundColor:'rgba(1, 50, 51, 1)'
 					}}
 					onClick={() => window.scrollMeTo()}>
-					<i class="material-icons">arrow_upward</i>
-				</a>
+					<i className="material-icons">arrow_upward</i>
+				</span>
 			</div>
 		);
 	}
 }
 
-export default LandingPage;
+const mapStateToProps = (state) => {
+	return {
+		isLoading: state.ui.isLoading
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+
+	} 
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
