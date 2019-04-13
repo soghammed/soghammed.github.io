@@ -315,24 +315,24 @@ class ChatWindow extends Component {
 							<div className="center">
 								{
 									// <div className="fb-login-button" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="true"></div>
-									// <SocialButton 
-									// 	provider="facebook"
-									// 	appId="375823176606290"
-									// 	// autoLogin={true}
-									// 	onLoginSuccess={this.handleSocialLogin}
-									// 	onLoginFailure={this.handleSocialLoginFailure}
-									// 	onLogoutSuccess={this.handleSocialLogout}
-									// 	onLogoutFailure={this.handleSocialLogoutFailure}
-									// 	getInstance={this.setNodeRef.bind(this, 'facebook')}
-									// 	key={'facebook'}
-									// 	logged={this.state.logged}
-									// 	socialsite="facebook"
-									// 	setClient={this.setClient}
-									// 	uiStartLoading={this.props.uiStartLoading}
-									// 	uiStopLoading={this.props.uiStopLoading}
-									// 	isLoading={this.props.isLoading}
-									// 	scope="public_profile,name,email,profilePicURL"
-									// 	/>
+									<SocialButton 
+										provider="facebook"
+										appId="375823176606290"
+										// autoLogin={true}
+										onLoginSuccess={this.handleSocialLogin}
+										onLoginFailure={this.handleSocialLoginFailure}
+										onLogoutSuccess={this.handleSocialLogout}
+										onLogoutFailure={this.handleSocialLogoutFailure}
+										getInstance={this.setNodeRef.bind(this, 'facebook')}
+										key={'facebook'}
+										logged={this.state.logged}
+										socialsite="facebook"
+										setClient={this.setClient}
+										uiStartLoading={this.props.uiStartLoading}
+										uiStopLoading={this.props.uiStopLoading}
+										isLoading={this.props.isLoading}
+										scope="public_profile,name,email,profilePicURL"
+										/>
 								}
 								{/* <SocialButton  
 								 	provider="google"
