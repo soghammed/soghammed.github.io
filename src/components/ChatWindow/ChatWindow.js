@@ -342,7 +342,21 @@ class ChatWindow extends Component {
 								 	setClient={this.setClient}
 								 	uiStartLoading={this.props.uiStartLoading}
 								 	uiStopLoading={this.props.uiStopLoading}/>*/}
-
+									<SocialButton
+										provider="instagram"
+										appId="929923068b2d46a2b6d8cd37d388c5ac"
+										onLoginSuccess={this.handleSocialLogin}
+										onLoginFailure={this.handleSocialLoginFailure}
+										onLogoutSuccess={this.handleSocialLogout}
+										onLogoutFailure={this.handleSocialLogoutFailure}
+										getInstance={this.setNodeRef.bind(this, 'instagram')}
+										socialsite='instagram'
+										setClient={this.setClient}
+										uiStartLoading={this.props.uiStartLoading}
+										uiStopLoading={this.props.uiStopLoading}
+										isLoading={this.props.isLoading}
+									/>
+								
 							</div>
 						</div>
 					)
