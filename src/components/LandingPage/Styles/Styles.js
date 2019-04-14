@@ -104,7 +104,7 @@ class Styles extends Component {
 					}
 
 					::-webkit-scrollbar-track {
-						background-color:rgba(0,0,0,1);
+						// background-color:rgba(0,0,0,1);
 
 					  /*box-shadow: inset 0 0 5px red; */
 					  /*border-radius: 10px;*/

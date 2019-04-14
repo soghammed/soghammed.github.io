@@ -82,10 +82,11 @@
         $(document).ready(() => $('.dropdown-trigger').dropdown());
       }
       function toggleChatWindow(){
-        console.log($("#chatWindow").css('height'));
-        $('#chatWindow').animate({
-          height: $("#chatWindow").css('height') == '41px' ? "181px" : "41px"
-        });
+        $('#chatWindowBody').toggle();
+        // console.log($("#chatWindow").css('height'));
+        // $('#chatWindow').animate({
+        //   height: $("#chatWindow").css('height') == '41px' ? "auto" : "41px"
+        // });
       }
     </script>
     <div id="root"></div>
