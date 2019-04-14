@@ -345,26 +345,26 @@ class ChatWindow extends Component {
 								<div className="center">
 									{
 										// <div className="fb-login-button" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="true"></div>
-										// <SocialButton 
-										// 	provider="facebook"
-										// 	appId="375823176606290"
-										// 	// autoLogin={true}
-										// 	onLoginSuccess={this.handleSocialLogin}
-										// 	onLoginFailure={this.handleSocialLoginFailure}
-										// 	onLogoutSuccess={this.handleSocialLogout}
-										// 	onLogoutFailure={this.handleSocialLogoutFailure}
-										// 	getInstance={this.setNodeRef.bind(this, 'facebook')}
-										// 	key={'facebook'}
-										// 	logged={this.state.logged}
-										// 	socialsite="facebook"
-										// 	setClient={this.setClient}
-										// 	uiStartLoading={this.props.uiStartLoading}
-										// 	uiStopLoading={this.props.uiStopLoading}
-										// 	isLoading={this.props.isLoading}
-										// 	scope="public_profile,name,email,profilePicURL"
-										// 	/>
+										<SocialButton 
+											provider="facebook"
+											appId="375823176606290"
+											// autoLogin={true}
+											onLoginSuccess={this.handleSocialLogin}
+											onLoginFailure={this.handleSocialLoginFailure}
+											onLogoutSuccess={this.handleSocialLogout}
+											onLogoutFailure={this.handleSocialLogoutFailure}
+											getInstance={this.setNodeRef.bind(this, 'facebook')}
+											key={'facebook'}
+											logged={this.state.logged}
+											socialsite="facebook"
+											setClient={this.setClient}
+											uiStartLoading={this.props.uiStartLoading}
+											uiStopLoading={this.props.uiStopLoading}
+											isLoading={this.props.isLoading}
+											scope="public_profile,name,email,profilePicURL"
+											/>
 									}
-									<SocialButton  
+									{/*<SocialButton  
 									 	provider="google"
 									 	appId="1040584838630-pf5ubddagk3bo898q6iubktr3hd6u4k4.apps.googleusercontent.com"
 									 	onLoginSuccess={this.handleSocialLogin}
@@ -386,7 +386,7 @@ class ChatWindow extends Component {
 											uiStartLoading={this.props.uiStartLoading}
 											uiStopLoading={this.props.uiStopLoading}
 											isLoading={this.props.isLoading}
-										/>
+										/>*/}
 								</div>
 							</div>
 						)
