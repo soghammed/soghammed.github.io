@@ -89,10 +89,8 @@ class ChatWindow extends Component {
 		const { logged, currentProvider } = this.state;
 		// console.log(logged, currentProvider);
 		if( logged && currentProvider ) {
-<<<<<<< HEAD
 			console.log(this.nodes[currentProvider].props.triggerLogout);
 			this.nodes[currentProvider].props.triggerLogout()
-=======
 			console.log(this.nodes);
 			// console.log(this.nodes[currentProvider].props.triggerLogout);
 			// console.log(this.nodes[currentProvider].checkLoggedIn());
@@ -113,7 +111,6 @@ class ChatWindow extends Component {
 			}else{
 				this.nodes[currentProvider].props.triggerLogout()
 			}
->>>>>>> 1f836f03defa2917f44c458e257d22ae9a014d74
 		} 
 	}
 
@@ -375,8 +372,7 @@ class ChatWindow extends Component {
 								 	socialsite="google"
 								 	setClient={this.setClient}
 								 	uiStartLoading={this.props.uiStartLoading}
-<<<<<<< HEAD
-								 	uiStopLoading={this.props.uiStopLoading}/>*/}
+								 	uiStopLoading={this.props.uiStopLoading}/>
 									<SocialButton
 										provider="instagram"
 										appId="929923068b2d46a2b6d8cd37d388c5ac"
@@ -391,14 +387,12 @@ class ChatWindow extends Component {
 										uiStopLoading={this.props.uiStopLoading}
 										isLoading={this.props.isLoading}
 									/>
-								
-=======
+						
 								 	uiStopLoading={this.props.uiStopLoading}
 								 	onLogoutSuccess={this.handleSocialLogout}
 								 	onLogoutFailure={this.handleSocialLogoutFailure}
 								 	/>
 
->>>>>>> 1f836f03defa2917f44c458e257d22ae9a014d74
 							</div>
 						</div>
 					)
