@@ -372,112 +372,27 @@ class ChatWindow extends Component {
 									 	socialsite="google"
 									 	setClient={this.setClient}
 									 	uiStartLoading={this.props.uiStartLoading}
-									 	uiStopLoading={this.props.uiStopLoading}
-									 	onLogoutSuccess={this.handleSocialLogout}
-									 	onLogoutFailure={this.handleSocialLogoutFailure}
-									 	getInstance={this.setNodeRef.bind(this, 'google')}
-									 	/>
-								<div className="input-field" style={{display:"inline-block",width:"90%"}}>
-						          <i 
-						          	className="material-icons prefix" 
-						          	style={{
-						          		// color:theme[themeMode].themeColor
-						          		color: "#013233",
-						          	}}>message</i>
-						          <textarea 
-						          	id="icon_prefix2" 
-						          	className="materialize-textarea" 
-						          	autoComplete="press"
-						          	value={this.state.message}
-						          	onChange={(e) => this.setState({message: e.target.value})}
-						          	></textarea>
-						          <label 
-						          	htmlFor="icon_prefix2" 
-						          	style={{
-						          		color: "#lightgrey"
-						          		// color:theme[themeMode].themeColor
-						          	}}>
-						          	Message
-						          </label>
-						        </div>
-						        <button 
-						        	className="btn-floating btn-small waves-effect waves-light" 
-						        	style={{
-						        		// backgroundColor:theme[themeMode].themeColor,
-						        		transform:"translate(10px,-25px)",
-						        		backgroundColor:"black",
-						        	}}
-						        	// onClick={() => this.addComment()}
-						        	><i className="material-icons" style={{backgroundColor:"#013233"}}>check</i></button>	
-							</div>
-						</div>
-					)
-					:
-					(
-						<div 
-							id="loginInWindow"
-							style={{
-								padding:"40px"
-							}}>
-							<div className="center">
-								{
-									// <div className="fb-login-button" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="true"></div>
-									// <SocialButton 
-									// 	provider="facebook"
-									// 	appId="375823176606290"
-									// 	// autoLogin={true}
-									// 	onLoginSuccess={this.handleSocialLogin}
-									// 	onLoginFailure={this.handleSocialLoginFailure}
-									// 	onLogoutSuccess={this.handleSocialLogout}
-									// 	onLogoutFailure={this.handleSocialLogoutFailure}
-									// 	getInstance={this.setNodeRef.bind(this, 'facebook')}
-									// 	key={'facebook'}
-									// 	logged={this.state.logged}
-									// 	socialsite="facebook"
-									// 	setClient={this.setClient}
-									// 	uiStartLoading={this.props.uiStartLoading}
-									// 	uiStopLoading={this.props.uiStopLoading}
-									// 	isLoading={this.props.isLoading}
-									// 	scope="public_profile,name,email,profilePicURL"
-									// 	/>
-								}
-								<SocialButton  
-								 	provider="google"
-								 	appId="1040584838630-pf5ubddagk3bo898q6iubktr3hd6u4k4.apps.googleusercontent.com"
-								 	onLoginSuccess={this.handleSocialLogin}
-								 	onLoginFailure={this.handleSocialLoginFailure}
-								 	socialsite="google"
-								 	setClient={this.setClient}
-								 	uiStartLoading={this.props.uiStartLoading}
-								 	uiStopLoading={this.props.uiStopLoading}/>
-									<SocialButton
-										provider="instagram"
-										appId="929923068b2d46a2b6d8cd37d388c5ac"
-										onLoginSuccess={this.handleSocialLogin}
-										onLoginFailure={this.handleSocialLoginFailure}
-										onLogoutSuccess={this.handleSocialLogout}
-										onLogoutFailure={this.handleSocialLogoutFailure}
-										getInstance={this.setNodeRef.bind(this, 'instagram')}
-										socialsite='instagram'
-										setClient={this.setClient}
-										uiStartLoading={this.props.uiStartLoading}
-										uiStopLoading={this.props.uiStopLoading}
-										isLoading={this.props.isLoading}
-									/>
+									 	uiStopLoading={this.props.uiStopLoading}/>
+										<SocialButton
+											provider="instagram"
+											appId="929923068b2d46a2b6d8cd37d388c5ac"
+											onLoginSuccess={this.handleSocialLogin}
+											onLoginFailure={this.handleSocialLoginFailure}
+											onLogoutSuccess={this.handleSocialLogout}
+											onLogoutFailure={this.handleSocialLogoutFailure}
+											getInstance={this.setNodeRef.bind(this, 'instagram')}
+											socialsite='instagram'
+											setClient={this.setClient}
+											uiStartLoading={this.props.uiStartLoading}
+											uiStopLoading={this.props.uiStopLoading}
+											isLoading={this.props.isLoading}
+										/>
 								</div>
 							</div>
 						)
+					
 					}
 				</div>
-				{
-					//display comment only if owner of ticket or assigned to user 
-					// this.props.client.id == ticket.owner.id || this.props.client.id == ticket.assigned_to.id ?
-					// (
-					
-					// )
-					// :
-					// null
-				}
 			</div>
 		);
 		// let content = (
