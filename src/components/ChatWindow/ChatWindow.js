@@ -11,9 +11,16 @@ class ChatWindow extends Component {
 			message: "",
 			usersListLoaded: false,
 			selectedChatUser: false,
+			selectedChatUserID: 1,
+			toggleRender: 0,
 		}
 
 		this.deselectChatUser = this.deselectChatUser.bind(this);
+		this.selectChatUser = this.selectChatUser.bind(this);
+	}
+
+	initLogoutDropdown(){
+		$(document).ready(() => $('.dropdown-trigger').dropdown());
 	}
 
 	getChatUsersList(){
@@ -21,9 +28,11 @@ class ChatWindow extends Component {
 		if(!this.state.usersListLoaded){
 			axios.get(this.props.backendServerRootURL+'api/users')
 				.then(res => {
+					// console.log('api/users response', res)
 					this.props.user.usersList = res.data;
+					// console.log(this.props);
 					this.setState({ usersListLoaded: true}, () => {
-						console.log(this.props.user.usersList, this.state);
+						// console.log(this.props.user.usersList, this.state);
 					})
 				})
 				.catch(err => console.log(err))
@@ -39,7 +48,8 @@ class ChatWindow extends Component {
 
 	selectChatUser(uid){
 		// this.props.user.selectChatUser = 
-		console.log('running');
+		// console.log('running');
+		this.props.uiStartLoading();
 		this.props.user.selectedChatUser = this.props.user.usersList.find((user) => {
 				// console.log(user.id, uid, user.id == (uid), user);
 			return user.id == uid;
@@ -47,10 +57,25 @@ class ChatWindow extends Component {
 		//find and update the correct comments to display then update selectedChatUser
 		axios.get(this.props.backendServerRootURL+'api/comments/'+this.props.user.selectedChatUser.id)
 			.then( res => {
+				this.props.uiStopLoading();
 				this.props.user.comments = res.data;
-				this.setState({selectedChatUser: true})
+				this.setState( prevState => {
+					return {
+						...prevState,
+						selectedChatUser: true,
+						selectedChatUserID: uid
+					}
+				}, () => {
+					$('#chatWindowScroller').animate({
+						scrollTop: $("#chatWindowScroller").prop("scrollHeight")
+					}, 0.2);
+					// console.log('selected chat user and gotten comments state', this.state)
+				})
 			})
-			.catch(err => console.log(err))
+			.catch(err => {
+				this.props.uiStopLoading();
+				// console.log(err);
+			})
 		// this.props.user.comments = this.props.user.comments.filter(comment => {
 		// 	console.log(comment.from.id, comment.to.id, uid);
 		// 	return comment.from.id == uid || comment.to.id == uid
@@ -59,13 +84,14 @@ class ChatWindow extends Component {
 		// console.log(result);
 		// this.props.user.selectedChatUser = this.props.user.usersList.find(uid);
 		// console.log(this.props.user.selectedChatUser);
-		console.log(this.props);
+		// console.log(this.props);
 	}
 
 	render(){
-		console.log('rendering');
+		// console.log('rendering');
 		let client = this.props.user ? this.props.user : null;
-		let isAdmin = this.props.isAdmin();
+		// console.log('client with render', this.props.user);
+		let isAdmin = this.props.isAdmin();	
 		let chatUsersList = isAdmin ? this.getChatUsersList() : null
 
 		let themeMode = this.props.themeMode;
@@ -76,7 +102,7 @@ class ChatWindow extends Component {
 					id="chatWindowScroller"
 					className="card-body"
 					style={{
-						marginTop:"20px",
+						// marginTop:"20px",
 						position:"relative",
 						minHeight:"300px",
 						maxHeight:"300px",
@@ -114,17 +140,18 @@ class ChatWindow extends Component {
 											id={"commentCard"+comment.id} 
 											className="card hoverable"
 											style={{
-												backgroundColor: client.id === comment.user_id ? "rgba(255,255,255,1)" : "gold",
+												backgroundColor: client.id == comment.user_id ? "rgba(255,255,255,1)" : "#90EE90",
 												padding:"10px 10px",
 												// margin:"10px 0 20px",
 												// display:'inline-block',
-												maxWidth:"100%",
+												maxWidth:"70%",
 												overflowWrap:"break-word",
 												// float:this.props.client.id == comment.by_userID ? "right" : "left",
-												float:client.id === comment.user_id ? "right" : "left",
-												boxShadow:"0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-											}}>
-											{/*<div 
+												float:client.id == comment.user_id ? "right" : "left",
+												// boxShadow:"0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+											}}
+											//title={"from:"+comment.user_id+" to:"+(this.state ? this.state.selectedChatUserID : "")}>
+											>{/*<div 
 												style={{
 													// color:themeMode == "dark" ?
 													// "#ffbf00" 
@@ -185,7 +212,10 @@ class ChatWindow extends Component {
 			        		transform:"translate(10px,-25px)",
 			        		backgroundColor:"black",
 			        	}}
-			        	onClick={() => this.props.addComment(this.state.message)}
+			        	onClick={() => {
+			        		this.props.addComment(this.state.message, this.state.selectedChatUserID)
+			        		this.state.message = "";
+			        	}}
 			        	><i className="material-icons" style={{backgroundColor:"#013233"}}>check</i></button>	
 				</div>
 			</div>
@@ -199,9 +229,9 @@ class ChatWindow extends Component {
 				{/*<div className="fb-login-button" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="true"></div> */}
 				<div className="center">
 					<a 
-						class="waves-effect waves-light btn-small modal-trigger" href="#skipLoginModal">
+						className="waves-effect waves-light btn-small modal-trigger" href="#skipLoginModal">
 						<i 
-							class="material-icons left">chat</i>
+							className="material-icons left">chat</i>
 						Let's Chat!
 					</a>
 					{/*<SocialButton 
@@ -287,11 +317,12 @@ class ChatWindow extends Component {
 			(
 				<div>
 					<div 
-						class="card-body collection"
+						className="card-body collection"
 						style={{
 						position:"relative",
 						minHeight:"300px",
 						maxHeight:"410px",
+						minWidth:"420px",
 						overflowY:"scroll",
 						margin:"0 0 0 7px",
 						borderLeft:"none",
@@ -307,11 +338,11 @@ class ChatWindow extends Component {
 									<a
 										href="#!" 
 										id={user.id} 
-										class="collection-item" 
+										className="collection-item" 
 										style={{
 											cursor:"pointer"
 										}}
-										onClick={(e) => this.selectChatUser(e.target.id)}>{user.name}</a>
+										onClick={(e) =>this.selectChatUser(e.target.id)}>{user.name} : {"{"} {user.email} {"}"}</a>
 								);
 							})
 
@@ -334,14 +365,14 @@ class ChatWindow extends Component {
 			:
 			liveChatWindowView
 			:
-			loginChatWindowView
-		console.log('chat window displayed props:', this.props, isAdmin, adminChatUsersListView);
+			null
 		return(
 			<div 
 				id="chatWindow"
 				className="card"
 				style={{
 					margin:0,
+					display:"none",
 				}}
 				>
 				<div 
@@ -354,7 +385,8 @@ class ChatWindow extends Component {
 					}}
 					onClick={
 						(el) => {
-							if(el.target.className.includes('card-header')){
+							if(el.target.className.includes('card-header') || el.target.innerHTML  == 'arrow_drop_down' || el.target.innerHTML == 'arrow_drop_up'){
+
 								window.toggleChatWindow()
 							}
 						}
@@ -367,7 +399,7 @@ class ChatWindow extends Component {
 								style={{
 									position:"absolute"
 								}}>
-								<i class="material-icons" style={{cursor:"pointer"}} onClick={this.deselectChatUser}>arrow_back</i>
+								<i className="material-icons" style={{cursor:"pointer"}} onClick={this.deselectChatUser}>arrow_back</i>
 							</div>
 						)
 						:
@@ -402,7 +434,7 @@ class ChatWindow extends Component {
 						}}>
 						<i 
 							className="dropdown-trigger material-icons"
-							data-target='dropdown1'
+							data-target={this.props.user ? 'dropdown1' : ""}
 							style={{
 								// position:"absolute",
 								// right:"7px",
@@ -410,19 +442,37 @@ class ChatWindow extends Component {
 							}}>
 							account_circle
 						</i>
-						<ul 
-							id='dropdown1' 
-							className='dropdown-content'>
-							<li 
-								// onClick={() => this.props.logout() 
-								>
-								<a href="#test">
-									<i className="material-icons">exit_to_app</i>
-								</a>
-							</li>
-						</ul>
+						{
+							this.props.user ? 
+							(
+								<ul 
+									id='dropdown1' 
+									className='dropdown-content'>
+									<li 
+										onClick={() => {
+											this.props.logoutChatUser();
+											this.setState({usersListLoaded: false}, () => console.log('usersListLoaded set to false state', this.state))
+										}}
+										// onClick={() => this.props.logout() 
+										>
+										<a href="#test">
+											<i className="material-icons">exit_to_app</i>
+										</a>
+									</li>
+								</ul>
+							)
+							:
+							null
+						}
+						{
+							this.props.user ?
+							this.initLogoutDropdown()
+							:
+							null
+						}
+						
 						<span 
-							class="material-icons"
+							className="material-icons"
 							id="minimizeChatButton"
 							style={{
 								position: "absolute",
@@ -435,13 +485,11 @@ class ChatWindow extends Component {
 						</span>
 					</div>
 
-					{window.initLogoutDropdown()}
-
 					{ 
 						// this.state.profile ? window.initLogoutDropdown() : null
 					}
 				</div>
-				<div id="chatWindowBody" style={{display:""}}>
+				<div id="chatWindowBody" style={{display:"none"}}>
 					{content}
 				</div>
 			</div>

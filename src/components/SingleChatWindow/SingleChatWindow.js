@@ -33,8 +33,27 @@ class SingleChatWindow extends Component {
 		this.setClient = this.setClient.bind(this);
 		this.isAdmin = this.isAdmin.bind(this);
 		this.selectedChatUser = this.selectedChatUser.bind(this);
+		this.addComment = this.addComment.bind(this);
+		this.logoutChatUser = this.logoutChatUser.bind(this);
 	}
 
+	logoutChatUser(){
+		// console.log('running logoutCHarUser');
+
+		this.setState( prevState => {
+			// console.log('inside set state with prevState as', prevState);
+			return {
+				...prevState,
+				user:null
+			}
+		}, () => {
+			$("#chatToggleIcon").css('display', 'block');
+			if($("#chatWindow").css('display') == "block"){
+				$("#chatWindow").toggle();
+			}
+			// console.log('after logoutChatUser', this.state)
+		});
+	}
 	isAdmin(){
 		// console.log('is admin running');
 		// console.log(this.state.user.email, this.state.user.email.trim() == "devhammed@gmail.com");
@@ -51,7 +70,7 @@ class SingleChatWindow extends Component {
 		if(node) {
 			this.nodes[ provider ] = node
 		}
-		console.log(this.nodes[provider]);
+		// console.log(this.nodes[provider]);
 	}
 
 	componentWillMount(){
@@ -73,7 +92,9 @@ class SingleChatWindow extends Component {
 				}
 			},
 			itsMe:0
-		}, () => console.log(this.state,'ran chat window component will mount'));
+		}, () => {
+			// console.log(this.state,'ran chat window component will mount')
+		});
 		//get session from <meta name="csrf-token" content="{{ csrf_token() }}">
 		// axios.get(backendServerRootURL+"api/secure/csrfToken")
 		// 	.then(res => {
@@ -93,7 +114,7 @@ class SingleChatWindow extends Component {
 	}
 
 	handleSocialLogin (user) {
-		console.log(user);
+		// console.log(user);
 		// this.setState(prevState => {
 		// 	return {
 		// 		...prevState,
@@ -105,12 +126,12 @@ class SingleChatWindow extends Component {
 	}
 
 	handleSocialLoginFailure(err){
-		console.log('loginFailure', err);
+		// console.log('loginFailure', err);
 		// window.FB.getLoginStatus(res => console.log(res))
 	}
 
 	handleSocialLogout(){
-		console.log('logged out from current profile and now unsetting profile');
+		// console.log('logged out from current profile and now unsetting profile');
 		// window.FB.getLoginStatus(res => console.log('status after logout', res));
 		this.setState( prevState => {
 			return {
@@ -136,7 +157,7 @@ class SingleChatWindow extends Component {
 	}
 
 	handleSocialLogoutFailure(err){
-		console.log('logoutFailure', err);
+		// console.log('logoutFailure', err);
 	}
 	logout () {
 		const { logged, currentProvider } = this.state;
@@ -144,7 +165,7 @@ class SingleChatWindow extends Component {
 		if( logged && currentProvider ) {
 			// console.log(this.nodes[currentProvider].props.triggerLogout);
 			this.nodes[currentProvider].props.triggerLogout()
-			console.log(this.nodes);
+			// console.log(this.nodes);
 			// console.log(this.nodes[currentProvider].props.triggerLogout);
 			// console.log(this.nodes[currentProvider].checkLoggedIn());
 			this.nodes[currentProvider].props.triggerLogout()
@@ -196,7 +217,7 @@ class SingleChatWindow extends Component {
 			let url = "http://soghammed.ddns.net/api/soghammed.github.io/public/api/comments";
 			axios.get(url)
 				.then(res => {
-					console.log('CommentsController@getComments', res);
+					// console.log('CommentsController@getComments', res);
 					resolve(res);
 				})
 				.catch(err => console.log(err))
@@ -227,35 +248,47 @@ class SingleChatWindow extends Component {
 				}
 			}, () => {
 				this.props.uiStopLoading();
-				console.log('profile set', this.state)
+				// console.log('profile set', this.state)
 			});			
 		});
 	}
 
-	addComment(message){
-		axios.post(backendServerRootURL+"api/comments/create", {
-			message: message, user: this.state.user
-		})
-		.then(res => {
-			// this.getComments();
-			console.log('returned', res);
-			this.setState(prevState => {
-				return {
-					...prevState,
-					user:{
-						...prevState.user,
-						comments: prevState.user.comments.concat(res.data)
-					}
-				}
-			}, () => {
-				console.log('after adding new comment to state', this.state)
-				$('#chatWindowScroller').animate({
-					scrollTop: $("#chatWindowScroller").prop("scrollHeight")
-				}, 0.2);
+	addComment(message, for_uid){
+		this.props.uiStartLoading();
+		if(message.trim() != "" && /^[0-9a-zA-Z\s?]+$/.test(message)){
+			axios.post(backendServerRootURL+"api/comments/create", {
+				message: message, user: this.state.user, for_uid:for_uid
 			})
-		})
-		.catch(err => console.log(err))
-		// this.props.addComment(this.state.message, this.state.profile);
+			.then(res => {
+				// this.getComments();
+				// console.log('nw commment response', res);
+				// res.data.id = res.data.user_id;
+				this.setState(prevState => {
+					// console.log(prevState.user.comments, res.data, prevState.user.comments.concat(res.data));
+					// return ;
+					return {
+						...prevState,
+						user:{
+							...prevState.user,
+							comments: prevState.user.comments.concat(res.data)
+						},
+					}
+				}, () => {
+					this.props.uiStopLoading();
+					// console.log('after adding new comment to state', this.state)
+					$('#chatWindowScroller').animate({
+						scrollTop: $("#chatWindowScroller").prop("scrollHeight")
+					}, 0.2);
+				})
+			})
+			.catch(err => {
+				this.props.uiStopLoading();
+				console.log(err);
+			})
+			// this.props.addComment(this.state.message, this.state.profile);
+		}else{
+			this.props.setNotification("Message is empty or contains invalid characters, for now only alpha and numerical characters are supported");
+		}
 	}
 
 	handleSkipLoginForm(e){
@@ -265,8 +298,8 @@ class SingleChatWindow extends Component {
 		// axios.post(backendServerRootURL+"api/comments/create",{
 		// 	name: this.state.newUser.name.value, email:this.state.newUser.email.value
 		// })
-		console.log(this.state.newUser);
-		console.log($('meta[name="csrf-token"]').attr('content'));
+		// console.log(this.state.newUser);
+		// console.log($('meta[name="csrf-token"]').attr('content'));
 		this.props.uiStartLoading();
 		axios.post(backendServerRootURL+"api/user/create",{
 			name: this.state.newUser.name.value, 
@@ -279,7 +312,7 @@ class SingleChatWindow extends Component {
 		})
 		.then(res => {
 			// console.log()
-			console.log(res.data)
+			// console.log(res.data)
 			if(res.data.name != null && res.data.email != null){
 				this.setState(prevState => {
 					return {
@@ -287,10 +320,17 @@ class SingleChatWindow extends Component {
 						user:	res.data
 					}
 				}, () => {
+					$("#chatToggleIcon").css('display', 'none');
+					if($('#chatWindow').css('display') == "none"){
+						if($("#chatWindowBody").css('display') == "none"){
+							$("#chatWindowBody").toggle();
+						}
+						$("#chatWindow").toggle();
+					}
 					//get comments
 					axios.get(backendServerRootURL+"api/comments/"+this.state.user.id)
 						.then(res => {
-							console.log('comments fetched', res.data);
+							// console.log('comments fetched', res.data);
 							this.setState(prevState => {
 								return {
 									...prevState,
@@ -300,7 +340,7 @@ class SingleChatWindow extends Component {
 									}
 								}
 							}, () => {
-								console.log('state after comments fetched', this.state.user.comments);
+								// console.log('state after comments fetched', this.state.user.comments);
 								$('.modal-close').click();
 								$('#chatWindowScroller').animate({
 									scrollTop: $("#chatWindowScroller").prop("scrollHeight")
@@ -349,7 +389,7 @@ class SingleChatWindow extends Component {
 		}
 	}
 	render(){
-		let clientID = 1;
+		// console.log('singlewindowrender state', this.state);
 		let themeMode = "light";
 		let comments = this.state.user ? this.state.user.comments : null;
 		let loading = 
@@ -359,7 +399,7 @@ class SingleChatWindow extends Component {
 			)
 			:
 			null
-		console.log('render comments', comments);
+		// console.log('render comments', comments);
 		// let comments = [
 			// 	{
 			// 		id: 1,
@@ -374,11 +414,8 @@ class SingleChatWindow extends Component {
 		let SignInModalView = (
 			<div 
 				id="skipLoginModal" 
-				class="modal" 
-				style={{
-					maxWidth:"250px"
-				}}>
-				<div class="modal-content">
+				className="modal">
+				<div className="modal-content">
 					<i style={{position:"absolute",right:"15px"}} className="material-icons modal-close">&#10539;</i>
 					<h5>Let's Chat!</h5> 
 					<form id="skipLoginForm" onSubmit={this.handleSkipLoginForm}>
@@ -387,9 +424,9 @@ class SingleChatWindow extends Component {
 							style={{
 								
 							}}>
-							<input type="text" id="skipLoginName" class="validate" placeholder="First Name" value={this.state.newUser.name.value} onChange={(e) => this.updateSkipLoginState('name', e)}/>
+							<input type="text" id="skipLoginName" className="validate" placeholder="First Name" value={this.state.newUser.name.value} onChange={(e) => this.updateSkipLoginState('name', e)}/>
 							<label htmlFor="#skipLoginName">Please enter your name:</label>
-							<span class="helper-text" data-error="&#10539;" data-success="&#10004;"></span>
+							<span className="helper-text" data-error="&#10539;" data-success="&#10004;"></span>
 						</div>
 						<div 
 							className="input-field"
@@ -397,9 +434,9 @@ class SingleChatWindow extends Component {
 
 							}}>
 							
-							<input type="email" id="skipLoginEmail" class="validate" placeholder="Email" value={this.state.newUser.email.value} onChange={(e) => this.updateSkipLoginState('email', e)}/>
+							<input type="email" id="skipLoginEmail" className="validate" placeholder="Email" value={this.state.newUser.email.value} onChange={(e) => this.updateSkipLoginState('email', e)}/>
 							<label htmlFor="skipLoginEmail">Please enter your email:</label>
-							<span class="helper-text" data-error="&#10539;" data-success="&#10004;"></span>
+							<span className="helper-text" data-error="&#10539;" data-success="&#10004;"></span>
 						</div>
 						<div className="input-field center">
 							{
@@ -459,7 +496,10 @@ class SingleChatWindow extends Component {
 				addComment={this.addComment}
 				isAdmin={this.isAdmin}
 				backendServerRootURL={backendServerRootURL}
-				selectedChatUser={this.selectedChatUser}/>
+				selectedChatUser={this.selectedChatUser}
+				logoutChatUser={this.logoutChatUser}
+				uiStartLoading={this.props.uiStartLoading}
+				uiStopLoading={this.props.uiStopLoading}/>
 		);
 		return(
 			<div 

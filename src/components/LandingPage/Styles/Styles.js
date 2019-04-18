@@ -132,6 +132,9 @@ class Styles extends Component {
 				  	#chatWindow{
 				  		transition: height 0.3s linear;
 				  	}
+				  	#skipLoginModal{
+				  		max-width:250px;
+				  	}
 				`}
 			</Style>
 		);

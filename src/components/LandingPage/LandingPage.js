@@ -134,19 +134,21 @@ class LandingPage extends Component {
 						</li>
 					</ul>
 				</div>
-				<span 
-					className="btn-floating btn-small waves-effect waves-light"
-					style={{
-						position: "fixed",
-						bottom:"50%",
-						right: "20px",
-						backgroundColor:'rgba(1, 50, 51, 1)'
-					}}
-					onClick={() => {
-						$('#chatWindowToggler').toggle();
-					}}>
-					<i className="material-icons">chat_bubble</i>
-				</span>
+				<a className="modal-trigger" href="#skipLoginModal" id="chatToggleIcon">
+					<span 
+						className="btn-floating btn-small waves-effect waves-light"
+						style={{
+							position: "fixed",
+							bottom:"50%",
+							right: "20px",
+							backgroundColor:'rgba(1, 50, 51, 1)'
+						}}
+						onClick={() => {
+							// $('#chatWindowToggler').toggle();
+						}}>
+						<i className="material-icons">chat_bubble</i>
+					</span>
+				</a>
 				<span 
 					className="btn-floating btn-small waves-effect waves-light"
 					style={{

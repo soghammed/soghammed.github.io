@@ -27,7 +27,7 @@ class Notifications extends Component {
 	}
 
 	animationExec(){
-		console.log(this.props);
+		// console.log(this.props);
 		if(this.props.status){
 			// console.log("Status: ", this.props.status);
 			if($("#notification_bar").css('display') == "block"){
