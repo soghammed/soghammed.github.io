@@ -63,12 +63,8 @@
         //   }
         // });
       // };
-
-
-
-
     </script>
-    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <!-- <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script> -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="text/javascript">
 
@@ -81,13 +77,39 @@
       function initLogoutDropdown(){
         $(document).ready(() => $('.dropdown-trigger').dropdown());
       }
+
       function toggleChatWindow(){
         $('#chatWindowBody').toggle();
+        if($("#chatWindowBody").css('display') == "block"){
+          $('#minimizeChatButton').html('arrow_drop_down');
+        }else{
+          $('#minimizeChatButton').html('arrow_drop_up');
+        }
         // console.log($("#chatWindow").css('height'));
         // $('#chatWindow').animate({
         //   height: $("#chatWindow").css('height') == '41px' ? "auto" : "41px"
         // });
       }
+      function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      function setCookie(cname, cvalue) {
+        var d = new Date();
+        d.setTime(d.getTime() + (60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }    
     </script>
     <div id="root"></div>
     <!--

@@ -3,10 +3,9 @@ import axios from 'axios';
 
 export const addComment = (message, profile) => {
 	return dispatch => {
-		const proxyurl = "https://cors-anywhere.herokuapp.com/";
-		axios.post(proxyurl+'http://soghammed.ddns.net/api/soghammed.github.io/public/api/comments/create', {
+		// const proxyurl = "https://cors-anywhere.herokuapp.com/";
+		axios.post('http://soghammed.ddns.net/api/soghammed.github.io/public/api/comments/create', {
 			data: {message: message, profile: profile},
-			withCredentials: true,
 		})
 		.then(res => console.log(res))
 		//{

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 // import { About, ContactUs, LandingScreen, Projects, Styles } from './index';
 import Navbar from '../UI/Navbar/Navbar';
 import About from './About/About';
@@ -6,12 +7,71 @@ import About from './About/About';
 import LandingScreen from './LandingScreen/LandingScreen';
 import Projects from './Projects/Projects';
 import ChatWindow from '../ChatWindow/ChatWindow';
+import SingleChatWindow from '../SingleChatWindow/SingleChatWindow';
+import Notifications from '../UI/Notifications/Notifications';
 import Styles from './Styles/Styles';
 import { connect } from 'react-redux';
+import { setNotification, unsetNotificationInit } from '../../store/actions/index';
 
+const $ = window.$;
 class LandingPage extends Component {
-		
+	
+	//getToken and set it if it doesnt exist;
+	constructor(props){
+		super(props);
+		this.state = {
+			admin: false,
+			adminCheckComplete:false,
+			chatWindows: [],
+			client: null,
+		}
+	}
+
+	componentWillMount(){
+		// this.getClient();
+		// if(!this.state.adminCheckComplete){
+		// 	let isAdmin = this.checkIsAdmin();
+		// 	this.setState({
+		// 		admin: isAdmin, 
+		// 		adminCheckComplete: true
+		// 	}, () => {
+		// 		console.log('state after checkIsAdmin is done and state updated', this.state);
+		// 		if(isAdmin){
+		// 			this.getClients();
+		// 		}
+		// 	});
+		// }
+		// <meta name="csrf-token" content="{{ csrf_token() }}">
+	}
+
+
+	checkIsAdmin(){
+		return true;
+	}
+
+
+
+	getClients(){
+
+		axios.get('api/users')
+			.then(res => console.log())
+	}
+
+	getClient(){
+		if(localStorage.getItem('cname') && localStorage.getItem('cemail')){
+			this.setState({
+				client: {
+					name: localStorage.get('cname'),
+					email: localStorage.get('cemail')
+				}
+			}, () =>  console.log('after setting client name and email', this.state))
+		}else{
+
+		}
+	}
+
 	render(){
+		let clients = null;
 		let content = (
 			<div 
 				style={{
@@ -28,7 +88,19 @@ class LandingPage extends Component {
 					<LandingScreen scrollMeTo={window.scrollMeTo}/>
 					<About scrollMeTo={window.scrollMeTo}/>
 					<Projects scrollMeTo={window.scrollMeTo}/>
-					<ChatWindow />
+					<SingleChatWindow 
+						style={{
+							// border: "3px solid gold",
+							position:"fixed",
+							bottom:"0",
+							right:"70px",
+							// display:"none",
+							// minHeight:"500px",
+							maxHeight:"500px",
+							minWidth:"30%",
+							maxWidth:"420px",
+						}}/>
+					<Notifications info={this.props.nMessage} status={this.props.nStatus} dismiss={this.props.unsetNotification} />
 					{/*	<ContactUs scrollMeTo={window.scrollMeTo}/>*/}
 				</div>
 			</div>
@@ -66,6 +138,19 @@ class LandingPage extends Component {
 					className="btn-floating btn-small waves-effect waves-light"
 					style={{
 						position: "fixed",
+						bottom:"50%",
+						right: "20px",
+						backgroundColor:'rgba(1, 50, 51, 1)'
+					}}
+					onClick={() => {
+						$('#chatWindowToggler').toggle();
+					}}>
+					<i className="material-icons">chat_bubble</i>
+				</span>
+				<span 
+					className="btn-floating btn-small waves-effect waves-light"
+					style={{
+						position: "fixed",
 						bottom:"20px",
 						right: "20px",
 						backgroundColor:'rgba(1, 50, 51, 1)'
@@ -73,6 +158,7 @@ class LandingPage extends Component {
 					onClick={() => window.scrollMeTo()}>
 					<i className="material-icons">arrow_upward</i>
 				</span>
+
 			</div>
 		);
 	}
@@ -80,13 +166,15 @@ class LandingPage extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		isLoading: state.ui.isLoading
+		isLoading: state.ui.isLoading,
+		nMessage: state.notifications.message,
+		nStatus: state.notifications.status
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-
+		unsetNotification: () => dispatch(unsetNotificationInit())
 	} 
 }
 

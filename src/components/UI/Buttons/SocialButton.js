@@ -27,11 +27,11 @@ class SocialButton extends Component {
 		// 	isConnected: false,
 		// 	isLoaded: false
 		// })
-		console.log(this.props);
+		// console.log(this.props);
 		// setTimeout(() => {
 		// 	this.isLoggedIn();
 		// }, 1000)
-		console.log('ran social button component will mount');
+		// console.log('ran social button component will mount');
 	}
 
 	componentDidMount(){

@@ -112,7 +112,7 @@ class Styles extends Component {
 					 
 					/* Handle */
 					::-webkit-scrollbar-thumb {
-					  background: rgba(1, 50, 51, 1)
+					  background: transparent;//rgba(1, 50, 51, 1)
 					  /*border-radius: 10px;*/
 					}
 

@@ -2,9 +2,11 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import uiReducer from './reducers/ui';
+import notificationsReducer from './reducers/notifications';
 
 const rootReducer = combineReducers({
-	ui: uiReducer
+	ui: uiReducer,
+	notifications: notificationsReducer
 });
 	
 const composerEnhancer = composeWithDevTools({

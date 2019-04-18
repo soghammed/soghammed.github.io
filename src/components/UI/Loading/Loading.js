@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Loading = (props) => (
-	<div className={"preloader-wrapper "+props.size+" active"}>
+	<div style={props.style} className={"preloader-wrapper "+props.size+" active"}>
 		<div className={"spinner-layer spinner-"+props.color+"-only"}>
 		  <div className="circle-clipper left">
 		    <div className="circle"></div>
