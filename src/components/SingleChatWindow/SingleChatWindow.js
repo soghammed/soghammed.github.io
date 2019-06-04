@@ -418,13 +418,13 @@ class SingleChatWindow extends Component {
 				<div className="modal-content">
 					<i style={{position:"absolute",right:"15px"}} className="material-icons modal-close">&#10539;</i>
 					<h5>Let's Chat!</h5> 
-					<form id="skipLoginForm" onSubmit={this.handleSkipLoginForm}>
+					<form id="skipLoginForm" onSubmit={this.handleSkipLoginForm} on>
 						<div 
 							className="input-field" 
 							style={{
 								
 							}}>
-							<input type="text" id="skipLoginName" className="validate" placeholder="First Name" value={this.state.newUser.name.value} onChange={(e) => this.updateSkipLoginState('name', e)}/>
+							<input type="text" id="skipLoginName" className="validate" autoComplete="any" placeholder="First Name" value={this.state.newUser.name.value} onChange={(e) => this.updateSkipLoginState('name', e)}/>
 							<label htmlFor="#skipLoginName">Please enter your name:</label>
 							<span className="helper-text" data-error="&#10539;" data-success="&#10004;"></span>
 						</div>
@@ -434,7 +434,7 @@ class SingleChatWindow extends Component {
 
 							}}>
 							
-							<input type="email" id="skipLoginEmail" className="validate" placeholder="Email" value={this.state.newUser.email.value} onChange={(e) => this.updateSkipLoginState('email', e)}/>
+							<input type="email" id="skipLoginEmail" className="validate" autoComplete="any" placeholder="Email" value={this.state.newUser.email.value} onChange={(e) => this.updateSkipLoginState('email', e)}/>
 							<label htmlFor="skipLoginEmail">Please enter your email:</label>
 							<span className="helper-text" data-error="&#10539;" data-success="&#10004;"></span>
 						</div>
