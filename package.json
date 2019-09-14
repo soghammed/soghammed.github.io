@@ -5,6 +5,7 @@
   "homepage": "https://soghammed.github.io",
   "dependencies": {
     "gh-pages": "^2.0.1",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
@@ -12,6 +13,7 @@
     "react-social-login": "^3.4.4",
     "react-social-login-buttons": "^2.3.1",
     "react-style-tag": "^2.0.1",
+    "react-threejs": "0.0.3",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
@@ -34,6 +36,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "gulp": "^4.0.2"
   }
 }

@@ -304,10 +304,14 @@ class SingleChatWindow extends Component {
 		axios.post(backendServerRootURL+"api/user/create",{
 			name: this.state.newUser.name.value, 
 			email:this.state.newUser.email.value
+		},
+		// {
+			// headers: {"Access-Control-Allow-Origin":"https://localhost:80"}
 			// headers: {
 	  //       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	  //   }
-		},{
+		// },
+		{
 			timeout: 2000,
 		})
 		.then(res => {

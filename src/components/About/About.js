@@ -4,7 +4,7 @@ const About = () => (
 	<div 
 		className="about section center" 
 		style={{
-			padding:"50px 200px",
+			padding:"50px",
 			backgroundColor:"#280E1A",
 			display:"flex",
 			justifyContent:"center",

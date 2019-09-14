@@ -13,6 +13,10 @@ class Styles extends Component {
 		return(
 			<Style>
 				{`
+					/*new portfolio here*/
+
+					/*end new portfolio here */
+					/*old*/
 					html{
 						// height:200vh;
 						font-family: 'Arsenal', sans-serif;

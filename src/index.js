@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
-import LandingPage from './components/LandingPage/LandingPage';
-// import App from './App';
+import Home from './components/Home/Home';
 import * as serviceWorker from './serviceWorker';
 
 import configStore from './store/configStore';
@@ -19,7 +17,7 @@ if (document.getElementById('root')) {
     // })();
     ReactDOM.render(
         <Provider store={configStore()}>
-            <LandingPage />
+            <Home />
         </Provider>, document.getElementById('root'));
 }    
 
