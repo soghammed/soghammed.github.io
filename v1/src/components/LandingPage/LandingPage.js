@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Renderer, Camera, Scene, MyCube } from 'react-threejs';
+// import { Renderer, Camera, Scene, MyCube } from 'react-threejs';
 import axios from 'axios';
 // import { About, ContactUs, LandingScreen, Projects, Styles } from './index';
 import Navbar from '../UI/Navbar/Navbar';
@@ -161,15 +161,7 @@ class LandingPage extends Component {
 					onClick={() => window.scrollMeTo()}>
 					<i className="material-icons">arrow_upward</i>
 				</span>
-				<Renderer size={10}>
-				    <Camera position={{ z: 5 }} />
-				    <Scene>
-				      <MyCube color={0x00ff00} rotation={1}>
-				        <MyCube color={0xff0000} position={{ y: 2 }} />
-				        <MyCube color={0x0000ff} position={{ z: 3 }} />
-				      </MyCube>
-				    </Scene>
-			    </Renderer>
+				
 			</div>
 		);
 	}

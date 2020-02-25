@@ -2,8 +2,9 @@ import React, { Component, Fragment } from 'react';
 import mypic from '../../docs/img/bg.jpg';
 import Projects from '../Projects/Projects';
 import About from '../About/About';
-
+import HomeStyle from './home.sass';
 import Styles from '../Styles/Styles';
+import $ from 'jquery';
 // import ticketLightMode from "../../docs/img/projects/ticketLightMode.jpg";
 // import ticketDarkMode from "../../docs/img/projects/ticketDarkMode.jpg";
 // import reactNativeApp from "../../docs/img/projects/reactnative.png";
@@ -15,10 +16,7 @@ class Home extends Component {
 		super(props);
 		this.state = {
 		}
-	}
-
-	render(){
-		return(
+		let oldsite = (
 			<Fragment>
 				<Styles/>
 				<div className="row">
@@ -95,6 +93,29 @@ class Home extends Component {
 					</div>
 				</div>
 			</Fragment>
+		);
+		this.animateCoverArrow();
+	}
+
+	animateCoverArrow(){
+		setInterval( () => {
+			console.log($('.cover-arrow span'));
+			// $('.cover_')
+			$('.cover-arrow').css({"font-size":"100px"}, () => {
+					$('.cover-arrow').css({"font-size":"30px"});
+			});
+			// $('.cover-arrow').addClass('pulse animated');
+		}, 3000);
+	}
+
+	render(){
+		return(
+			<div class="cover">
+				<div class="cover-developer-container">
+					<h2 class="cover-developer-name center-block">Mohammed Hammed</h2><h6 class="material-icons cover-arrow">arrow_forward</h6>
+				</div>
+
+			</div>
 		)
 	}
 
