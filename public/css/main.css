@@ -1,24 +1,157 @@
-.cover-developer-name {
+.nav-bar {
+  color: white;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 20px;
+  margin: auto; }
+  .nav-bar li {
+    display: inline-block;
+    padding: 20px;
+    cursor: pointer; }
+    .nav-bar li:active {
+      color: #3A7E57; }
+
+.homepage-container {
+  position: relative;
+  z-index: 2;
+  background-image: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover; }
+
+.developer-name-container {
+  z-index: 3;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+
+.developer-name {
+  display: flex;
+  position: relative;
+  text-align: center;
+  flex-direction: column;
   font-family: 'Ubuntu', sans-serif;
   color: darkgrey;
-  border-bottom: 3px solid lightgrey;
-  display: inline-block; }
-
-.cover-arrow {
-  transition: font-size 2s;
-  font-size: 40px !important;
-  margin-left: 40px; }
-
-.cover-developer-container {
-  position: relative;
-  left: 20%;
-  top: 20%; }
-
-.cover {
-  position: fixed;
-  height: 100%;
-  width: 100%;
   margin: auto; }
+
+.headline {
+  font-size: 70px;
+  line-height: 0px;
+  transition: all 1s; }
+
+.headline-left {
+  text-align: left; }
+
+.headline-right {
+  padding-left: 102px; }
+
+.headline-arrow {
+  position: relative;
+  cursor: pointer; }
+
+.headline-code {
+  display: none;
+  color: red;
+  font-size: 19px;
+  font-weight: bold; }
+
+.aboutme {
+  display: flex;
+  background-color: transparent; }
+  .aboutme .developer-about-me {
+    margin: auto; }
+
+.services {
+  color: white; }
+  .services .services-list-container {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-left: 50px;
+    margin-right: 50px;
+    justify-content: space-between; }
+  .services .service {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    width: 300px;
+    height: 300px; }
+  .services .service-desc {
+    display: flex;
+    flex-grow: 0.9;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px; }
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 100%;
+  perspective: 1000px;
+  /* Remove this if you don't want the 3D effect */ }
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d; }
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg); }
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden; }
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  color: white; }
+
+.flip-card-front-content {
+  display: flex;
+  flex-grow: 0.9;
+  align-items: center;
+  justify-content: space-evenly; }
+
+.flip-card-front-title, .flip-card-back-title {
+  font-weight: bold; }
+
+/* Style the back side */
+.flip-card-back {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  color: white;
+  transform: rotateY(180deg); }
+
+.h-500 {
+  height: 500px; }
+
+.carousel-item img {
+  margin: auto; }
+
+.contactme {
+  color: white; }
+  .contactme form {
+    margin: auto;
+    width: 50%; }
+  .contactme .section-title {
+    color: white; }
 
 /*!
  * animate.css -https://daneden.github.io/animate.css/
@@ -2611,10 +2744,34 @@
 html, body {
   height: 100%;
   margin: 0;
-  padding: 0; }
-
-body {
-  overflow: hidden; }
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif !important; }
 
 .container {
   height: 100%; }
+
+section {
+  position: relative;
+  z-index: 2;
+  min-height: 400px;
+  padding: 50px;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 30px; }
+
+.dim {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); }
+
+.portfolio {
+  opacity: 0; }
+
+.developer-about-me {
+  text-align: center; }
+
+.section-title {
+  text-align: center;
+  padding: 0px 50px 80px; }

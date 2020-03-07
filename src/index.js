@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LandingPage from './components/LandingPage/LandingPage';
-import Home from './components/Home/Home';
+import App from './components/App.js';
+// import Home from './components/Home/Home';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import configStore from './store/configStore';
 import { Provider } from 'react-redux'; 
@@ -18,7 +19,7 @@ if (document.getElementById('root')) {
     // })();
     ReactDOM.render(
         <Provider store={configStore()}>
-            <LandingPage />
+            <App />
         </Provider>, document.getElementById('root'));
 }    
 
