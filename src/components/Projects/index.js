@@ -14,6 +14,50 @@ export default class Projects extends Component {
 				<Carousel.Item>
 				<img
 				  className="d-block h-500"
+				  src="images/projects/OnboardingSurvey1.jpg"
+				  alt="First slide"
+				/>
+				<Carousel.Caption>
+				  <h3>Onboarding Survey</h3>
+				  <p>Node.js + mysql & react.js.</p>
+				</Carousel.Caption>
+				</Carousel.Item>
+				<Carousel.Item>
+				<img
+				  className="d-block h-500"
+				  src="images/projects/OnboardingSurvey2.jpg"
+				  alt="First slide"
+				/>
+				<Carousel.Caption>
+				  <h3>Onboarding Survey</h3>
+				  <p>Node.js + mysql & react.js.</p>
+				</Carousel.Caption>
+				</Carousel.Item>
+				<Carousel.Item>
+				<img
+				  className="d-block h-500"
+				  src="images/projects/OnboardingSurvey3.jpg"
+				  alt="First slide"
+				/>
+				<Carousel.Caption>
+				  <h3>Onboarding Survey</h3>
+				  <p>Node.js + mysql & react.js.</p>
+				</Carousel.Caption>
+				</Carousel.Item>
+				<Carousel.Item>
+				<img
+				  className="d-block h-500"
+				  src="images/projects/OnboardingSurvey4.jpg"
+				  alt="First slide"
+				/>
+				<Carousel.Caption>
+				  <h3>Onboarding Survey</h3>
+				  <p>Node.js + mysql & react.js.</p>
+				</Carousel.Caption>
+				</Carousel.Item>
+				<Carousel.Item>
+				<img
+				  className="d-block h-500"
 				  src="images/projects/ticketLightMode.jpg"
 				  alt="First slide"
 				/>
