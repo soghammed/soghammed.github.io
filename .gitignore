@@ -10,7 +10,12 @@
 /coverage
 
 # production
-/build
+/public
+/src
+/v1
+gulpfile.js
+*.json
+*.json
 
 # misc
 .DS_Store
