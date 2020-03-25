@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Carousel from 'react-bootstrap/Carousel';
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import $ from 'jquery';
+
 export default class Projects extends Component {
 	constructor(props){
 		super();
@@ -10,50 +12,52 @@ export default class Projects extends Component {
 	}
 	render() {
 		let bootstrapCarousel = (
-			<Carousel>
+			<Carousel
+				prevIcon={(<MdKeyboardArrowLeft color="lightblue" size={30}/>)}
+				nextIcon={(<MdKeyboardArrowRight color="lightblue" size={30}/>)}>
 				<Carousel.Item>
 				<img
 				  className="d-block h-500"
-				  src="images/projects/OnboardingSurvey1.jpg"
+				  src="images/projects/OnboardingSurvey.png"
 				  alt="First slide"
 				/>
-				<Carousel.Caption>
+				{/*<Carousel.Caption>
 				  <h3>Onboarding Survey</h3>
 				  <p>Node.js + mysql & react.js.</p>
-				</Carousel.Caption>
+				</Carousel.Caption>*/}
 				</Carousel.Item>
 				<Carousel.Item>
 				<img
 				  className="d-block h-500"
-				  src="images/projects/OnboardingSurvey2.jpg"
+				  src="images/projects/OnboardingSurvey1.png"
 				  alt="First slide"
 				/>
-				<Carousel.Caption>
+				{/*<Carousel.Caption>
 				  <h3>Onboarding Survey</h3>
 				  <p>Node.js + mysql & react.js.</p>
-				</Carousel.Caption>
+				</Carousel.Caption>*/}
 				</Carousel.Item>
 				<Carousel.Item>
 				<img
 				  className="d-block h-500"
-				  src="images/projects/OnboardingSurvey3.jpg"
+				  src="images/projects/OnboardingSurvey2.png"
 				  alt="First slide"
 				/>
-				<Carousel.Caption>
+				{/*<Carousel.Caption>
 				  <h3>Onboarding Survey</h3>
 				  <p>Node.js + mysql & react.js.</p>
-				</Carousel.Caption>
+				</Carousel.Caption>*/}
 				</Carousel.Item>
 				<Carousel.Item>
 				<img
 				  className="d-block h-500"
-				  src="images/projects/OnboardingSurvey4.jpg"
+				  src="images/projects/OnboardingSurvey3.png"
 				  alt="First slide"
 				/>
-				<Carousel.Caption>
+				{/*<Carousel.Caption>
 				  <h3>Onboarding Survey</h3>
 				  <p>Node.js + mysql & react.js.</p>
-				</Carousel.Caption>
+				</Carousel.Caption>*/}
 				</Carousel.Item>
 				<Carousel.Item>
 				<img

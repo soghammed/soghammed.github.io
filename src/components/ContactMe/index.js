@@ -10,10 +10,10 @@ export default class ContactMe extends React.Component {
 				<h3 class="section-title">Contact Me</h3>
 				<Form>
 					<Form.Group as={Row} controlId="formHorizontalName">
-						<Form.Label column sm={1}>
+						<Form.Label column sm={2}>
 							Name
 						</Form.Label>
-						<Col sm={11}>
+						<Col sm={10}>
 							<Form.Control type="text"/>
 						</Col>
 					</Form.Group>

@@ -6,6 +6,7 @@ import Projects from './Projects'
 import Blog from './Blog'
 import ContactMe from './ContactMe'
 import Footer from './Footer'
+import ChatWithMeWidget from './ChatWithMeWidget'
 import Button from 'react-bootstrap/Button'
 // import Navbar from 'react-bootstrap/Navbar'
 // import Nav from 'react-bootstrap/Nav'
@@ -148,6 +149,7 @@ export default class App extends Component {
 						<Projects/>
 						<Services/>
 						<ContactMe/>
+					<ChatWithMeWidget size={40} color="white"/>
 					</div>
 				</div>
 			</Fragment>
